@@ -1,8 +1,9 @@
 FROM python:2-onbuild
 
-ENV ZK_HOSTS localhost:2181
+ENV ASSIGNMENT '{"kafka-address":"localhost:0000","time":0,"factories":[]}'
 
-ADD setup.py /
-ADD daemon.py /
+ADD Producer.py /
+ADD Factory/ /Factory/
+ADD run.py /
 
-CMD python setup.py --zk_hosts=${ZK_HOSTS}
+CMD python run.py --assigment=${ASSIGNMENT}

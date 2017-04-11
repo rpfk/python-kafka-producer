@@ -1,6 +1,6 @@
 FROM python:2-onbuild
 
-ENV ASSIGNMENT_URL https://raw.githubusercontent.com/rpfk/kafka-python-producer-assignment/master/assignment.json
+ENV ASSIGNMENT_URL https://raw.githubusercontent.com/rpfk/python-kafka-producer-assignment/master/assignment.json
 ENV KAFKA_ADDRESS localhost:21
 
 ADD Producer.py /

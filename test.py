@@ -5,7 +5,7 @@ import pycurl
 # get the assignment from the assignment url
 assignment_buffer = StringIO()
 c = pycurl.Curl()
-c.setopt(c.URL, 'https://raw.githubusercontent.com/rpfk/kafka-python-producer-assignment/master/assignment.json')
+c.setopt(c.URL, 'https://raw.githubusercontent.com/rpfk/python-kafka-producer-assignment/master/assignment.json')
 c.setopt(c.WRITEDATA, assignment_buffer)
 c.perform()
 c.close()

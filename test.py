@@ -1,7 +1,15 @@
 from Producer import Producer
+from StringIO import StringIO
+import pycurl
 
-fid = open('assignment.json', 'r')
-assignment = fid.read()
-fid.close()
+# get the assignment from the assignment url
+assignment_buffer = StringIO()
+c = pycurl.Curl()
+c.setopt(c.URL, 'https://raw.githubusercontent.com/rpfk/kafka-python-producer-assignment/master/assignment.json')
+c.setopt(c.WRITEDATA, assignment_buffer)
+c.perform()
+c.close()
+assignment = assignment_buffer.getvalue()
 
-Producer(assignment)
+# run the producer
+Producer('localhost:21', assignment)

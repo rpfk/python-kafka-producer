@@ -40,6 +40,8 @@ The number of messages per second can be specified in the production rate attrib
 
 ### Example Assignment
 
+Below you can find an example of an assignment. More examples can be found on [rpfk/python-kafka-producer-assignment](https://github.com/rpfk/python-kafka-producer-assignment)
+
 ```json
 {
   "time": 10,

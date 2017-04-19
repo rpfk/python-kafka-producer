@@ -1,6 +1,6 @@
 # Example Kafka Producer
 
-An easy way to produce dummy messages on Kafka using a Docker container.
+An easy way to produce dummy messages on Kafka using a Docker container. The container can also be found on the Docker Hub [rpfk/python-kafka-producer](https://hub.docker.com/r/rpfk/python-kafka-producer/).
 
 ## Kafka Settings
 

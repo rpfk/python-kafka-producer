@@ -6,8 +6,9 @@ from StringIO import StringIO
 
 
 def main(argv):
-    kafka_address = []
-    assignment = []
+    # Default values
+    assignment_url = 'https://raw.githubusercontent.com/rpfk/python-kafka-producer-assignment/master/assignment.json'
+    kafka_address = '192.168.21.21:9092'
 
     # Check if the required command line arguments are given
     try:
@@ -21,15 +22,7 @@ def main(argv):
         if opt == "--kafka-address":
             kafka_address = arg
         elif opt == "--assignment-url":
-
-            # get the assignment from the assignment url
-            assignment_buffer = StringIO()
-            c = pycurl.Curl()
-            c.setopt(c.URL, arg)
-            c.setopt(c.WRITEDATA, assignment_buffer)
-            c.perform()
-            c.close()
-            assignment = assignment_buffer.getvalue()
+            assignment_url = arg
 
     # Check if kafka address is set correctly
     try:
@@ -41,11 +34,20 @@ def main(argv):
 
     # Check if assignment is set correctly
     try:
-        assignment
+        assignment_url
     except NameError:
-        print 'assignment is not set correctly, check the assignment url'
+        print 'assignment url is not set correctly, check the assignment url'
         print 'run.py --kafka-address=<kafka-address> --assignment-url=<assignment-url>'
         sys.exit()
+
+    # get the assignment from the assignment url
+    assignment_buffer = StringIO()
+    c = pycurl.Curl()
+    c.setopt(c.URL, assignment_url)
+    c.setopt(c.WRITEDATA, assignment_buffer)
+    c.perform()
+    c.close()
+    assignment = assignment_buffer.getvalue()
 
     # Run the producer if everything is set correctly
     Producer(kafka_address, assignment)
